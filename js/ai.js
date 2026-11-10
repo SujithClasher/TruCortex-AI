@@ -15,6 +15,19 @@ class TruCortexAIEngine {
     // Intent dictionary mapping keywords & semantic patterns to verified answers
     this.intents = [
       {
+        id: "INT-00",
+        keywords: ["which cv cmr pitch is approved", "can i share the rank scale", "pitch is approved", "which pitch is approved", "which cv cmr pitch"],
+        requiredAccess: "General",
+        sourceDocId: "DOC-CMR-PITCH",
+        sourceSlide: 4,
+        answer: "The approved deck for lender presentations is 'CreditVision CMR Sales Pitch Deck v1.4' (Owner: Priya Nair, Status: Approved). Yes, you can share the official rank scale: it operates on a standardized 1 to 10 risk tier classification (Tier 1 = Prime, Tier 10 = High Risk).",
+        bullets: [
+          "Approved Deck: CreditVision CMR Sales Pitch Deck v1.4 (Status: Approved, General Access).",
+          "Official Rank Scale: 10 granular tiers (1 to 10) for automated commercial underwriting.",
+          "Compliance Advisory: Do NOT circulate legacy v2.9 (outdated 1-5 scale) which caused prior lender discrepancies."
+        ]
+      },
+      {
         id: "INT-01",
         keywords: ["cmr rank scale", "rank scale", "cmr scale", "1-10", "1 to 10", "tiers", "what is the rank scale", "creditvision cmr"],
         requiredAccess: "Internal",

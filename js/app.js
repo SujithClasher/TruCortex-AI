@@ -24,6 +24,7 @@
 
     init() {
       this.loadState();
+      this.initTheme();
       this.bindEvents();
       this.render();
 
@@ -127,6 +128,59 @@
         localStorage.setItem("trucortex_logs", JSON.stringify(this.logs.slice(-100)));
       } catch (e) {
         console.error("Failed to save local state", e);
+      }
+    }
+
+    initTheme() {
+      const savedTheme = localStorage.getItem("trucortex_theme") || "light";
+      this.setTheme(savedTheme, false);
+    }
+
+    toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme") || "light";
+      const newTheme = current === "dark" ? "light" : "dark";
+      this.setTheme(newTheme, true);
+    }
+
+    setTheme(theme, showToast = true) {
+      document.documentElement.setAttribute("data-theme", theme);
+      document.body.setAttribute("data-theme", theme);
+      localStorage.setItem("trucortex_theme", theme);
+      this.updateThemeUI(theme);
+      if (showToast) {
+        this.showToast(`Switched to ${theme === "dark" ? "Dark Mode" : "Light Mode"}`, "info");
+        this.log("SYS", `Theme set to: [${theme.toUpperCase()}]`);
+      }
+    }
+
+    updateThemeUI(theme) {
+      const btn = document.getElementById("btnThemeToggle");
+      const menuLabel = document.getElementById("themeMenuLabel");
+      const isDark = theme === "dark";
+
+      if (btn) {
+        btn.innerHTML = isDark ? `
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FFD800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        ` : `
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        `;
+        btn.setAttribute("title", isDark ? "Switch to Light Mode" : "Switch to Dark Mode");
+      }
+
+      if (menuLabel) {
+        menuLabel.textContent = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
       }
     }
 
@@ -688,6 +742,38 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <div class="card-panel">
+          <div class="panel-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+            <div>
+              <h3>Pilot Business Impact & Time Savings (MANCOM Projections)</h3>
+              <span class="panel-subtitle">Measured across 30 colleagues in 6 CIBIL teams · Target 40 pilot users</span>
+            </div>
+            <span class="sev-badge badge-high" style="background:rgba(56,189,248,0.15); color:#0284C7; border:1px solid rgba(56,189,248,0.3); font-weight:800;">Slide 9 & 10 Verified</span>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-top:14px;">
+            <div style="background:var(--cibil-light-grey); border:1px solid var(--cibil-border); border-radius:8px; padding:14px 16px;">
+              <div style="font-size:0.6875rem; font-weight:800; color:var(--cibil-text-muted); text-transform:uppercase; letter-spacing:0.05em;">Annual Capacity Freed</div>
+              <div style="font-size:1.6rem; font-weight:800; color:#00A6CA; margin:4px 0;">1,104 hrs</div>
+              <div style="font-size:0.75rem; color:var(--cibil-text-muted);">Freed across 40 pilot users (Capacity freed, not headcount cut)</div>
+            </div>
+            <div style="background:var(--cibil-light-grey); border:1px solid var(--cibil-border); border-radius:8px; padding:14px 16px;">
+              <div style="font-size:0.6875rem; font-weight:800; color:var(--cibil-text-muted); text-transform:uppercase; letter-spacing:0.05em;">Avg Document Search Time</div>
+              <div style="font-size:1.6rem; font-weight:800; color:#1E8449; margin:4px 0;">6 min <span style="font-size:0.8125rem; font-weight:600; color:var(--cibil-text-muted);">(was 15+ min)</span></div>
+              <div style="font-size:0.75rem; color:var(--cibil-text-muted);">60% search time reduction vs 3-in-4 survey baseline</div>
+            </div>
+            <div style="background:var(--cibil-light-grey); border:1px solid var(--cibil-border); border-radius:8px; padding:14px 16px;">
+              <div style="font-size:0.6875rem; font-weight:800; color:var(--cibil-text-muted); text-transform:uppercase; letter-spacing:0.05em;">Change Impact Summary Prep</div>
+              <div style="font-size:1.6rem; font-weight:800; color:var(--cibil-navy); margin:4px 0;">45 min <span style="font-size:0.8125rem; font-weight:600; color:var(--cibil-text-muted);">(was 2.0 hrs)</span></div>
+              <div style="font-size:0.75rem; color:var(--cibil-text-muted);">62.5% acceleration in preparing blast-radius reviews</div>
+            </div>
+            <div style="background:var(--cibil-light-grey); border:1px solid var(--cibil-border); border-radius:8px; padding:14px 16px;">
+              <div style="font-size:0.6875rem; font-weight:800; color:var(--cibil-text-muted); text-transform:uppercase; letter-spacing:0.05em;">Cross-Doc Conflict Check</div>
+              <div style="font-size:1.6rem; font-weight:800; color:#F2C94C; margin:4px 0;">30 min <span style="font-size:0.8125rem; font-weight:600; color:var(--cibil-text-muted);">(was 90 min)</span></div>
+              <div style="font-size:0.75rem; color:var(--cibil-text-muted);">66% faster resolution of spec & validation discrepancies</div>
+            </div>
           </div>
         </div>
       `;

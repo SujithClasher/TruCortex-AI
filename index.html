@@ -122,6 +122,14 @@
           <kbd class="search-shortcut-pill">/</kbd>
         </button>
 
+        <!-- Dark / Light Mode Toggle Button -->
+        <button class="btn-icon-util" id="btnThemeToggle" onclick="window.TruCortexApp.toggleTheme()"
+          title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
         <!-- Notification Bell -->
         <div class="notif-wrapper" style="position: relative;">
           <button class="btn-icon-util" id="btnNotifBell" onclick="window.TruCortexApp.toggleNotifDropdown()"
@@ -186,6 +194,14 @@
               </div>
             </div>
             <div class="dropdown-divider"></div>
+            <div class="dropdown-item" onclick="window.TruCortexApp.toggleTheme()">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+                <span id="themeMenuLabel">Toggle Dark Mode</span>
+              </div>
+            </div>
             <div class="dropdown-item reset-item" onclick="window.TruCortexApp.resetDemo()">
               <div style="display:flex; align-items:center; gap:8px;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"

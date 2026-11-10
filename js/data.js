@@ -33,7 +33,7 @@ const SEED_USERS = [
     canApprove: false,
     department: "Commercial Sales",
     sampleQuestions: [
-      "What are the target borrower segments for Grameen Score?",
+      "Which CV CMR pitch is approved, and can I share the rank scale?",
       "What is the rank scale in CreditVision CIBIL Commercial Rank Sales Deck?",
       "Show me internal formula weights in CreditVision CMR Methodology." // Triggers RESTRICTED ACCESS!
     ]
