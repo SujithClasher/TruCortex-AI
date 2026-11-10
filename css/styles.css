@@ -1512,7 +1512,6 @@ body.platform-body {
 .btn-explain-ai:hover { background: var(--cibil-navy); }
 
 .radar-visual-panel {
-  background: #FFFFFF !important;
   position: relative;
   z-index: 1;
 }
@@ -1523,8 +1522,10 @@ body.platform-body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #FFFFFF;
+  background: #F8FAFC;
+  border: 1px solid var(--cibil-border-light);
   border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .radar-svg {
@@ -3026,6 +3027,17 @@ body[data-theme="dark"] {
 }
 
 /* Impact Radar Screen */
+[data-theme="dark"] .radar-visual-panel,
+[data-theme="dark"] .radar-table-panel {
+  background: #1E293B !important;
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] .radar-svg-wrapper {
+  background: #0B1120 !important;
+  border: 1px solid #334155 !important;
+}
+
 [data-theme="dark"] .radar-svg rect:first-of-type,
 [data-theme="dark"] .radar-canvas-bg {
   fill: #0B1120 !important;
@@ -3042,6 +3054,64 @@ body[data-theme="dark"] {
 
 [data-theme="dark"] .radar-node-label {
   fill: #F1F5F9 !important;
+}
+
+[data-theme="dark"] .btn-radar-diff {
+  background: #0F172A !important;
+  border-color: #334155 !important;
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .btn-radar-diff:hover {
+  background: #283548 !important;
+  border-color: #00A6CA !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .btn-explain-ai {
+  background: #00A6CA !important;
+  border-color: #00A6CA !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .btn-micro {
+  background: #0F172A !important;
+  border-color: #334155 !important;
+  color: #38BDF8 !important;
+}
+
+[data-theme="dark"] .impact-table th {
+  background: #0F172A !important;
+  color: #94A3B8 !important;
+  border-bottom: 2px solid #334155 !important;
+}
+
+[data-theme="dark"] .impact-table td {
+  border-bottom: 1px solid #283548 !important;
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .impact-row:hover {
+  background-color: #283548 !important;
+}
+
+[data-theme="dark"] .impact-row.row-selected {
+  background-color: #1E3A5F !important;
+  outline: 2px solid #38BDF8 !important;
+}
+
+[data-theme="dark"] .doc-title-link {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .owner-pill {
+  background: #0F172A !important;
+  border: 1px solid #334155 !important;
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .reason-text {
+  color: #CBD5E1 !important;
 }
 
 [data-theme="dark"] .radar-summary-card,

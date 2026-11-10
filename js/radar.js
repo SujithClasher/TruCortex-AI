@@ -49,8 +49,8 @@ class TruCortexRadar {
           </linearGradient>
         </defs>
 
-        <!-- Solid Opaque SVG Background Canvas (prevents background bleed-through) -->
-        <rect width="${width}" height="${height}" rx="10" fill="#FFFFFF"/>
+        <!-- Solid Opaque SVG Background Canvas (transparent, inherits wrapper theme) -->
+        <rect width="${width}" height="${height}" rx="10" class="radar-canvas-bg" fill="none"/>
 
         <!-- Concentric Distance Rings -->
         <circle cx="${cx}" cy="${cy}" r="75" stroke="#E2E8F0" stroke-width="1.2" stroke-dasharray="4 4" fill="none" />
