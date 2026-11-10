@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruCortex AI | TransUnion CIBIL Enterprise Intelligence Platform</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="platform-body">
+
+  <!-- ========================================================================
+       TOP ENTERPRISE APPLICATION HEADER
+       ======================================================================== -->
+  <header class="platform-header" id="platformHeader">
+    <div class="header-inner">
+      <!-- Left: Logo & Platform Identity -->
+      <div class="platform-brand">
+        <a href="index.html" class="brand-link" title="TruCortex AI Enterprise Platform">
+          <img src="assets/logo.svg" alt="TransUnion CIBIL" class="brand-logo">
+        </a>
+        <div class="brand-divider"></div>
+        <div class="brand-meta">
+          <span class="platform-name">TruCortex AI</span>
+        </div>
+      </div>
+
+      <!-- Center: Navigation Tabs -->
+      <nav class="platform-nav" id="platformNav">
+        <button class="nav-tab-btn active" data-tab="dashboard" id="navDashboardBtn" onclick="window.TruCortexApp.switchTab('dashboard')">
+          <span class="tab-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="9" rx="1" />
+              <rect x="14" y="3" width="7" height="5" rx="1" />
+              <rect x="14" y="12" width="7" height="9" rx="1" />
+              <rect x="3" y="16" width="7" height="5" rx="1" />
+            </svg>
+          </span>
+          <span class="tab-label">Dashboard</span>
+          <span class="pm-only-pill">PM</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="ask" onclick="window.TruCortexApp.switchTab('ask')">
+          <span class="tab-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              <path d="M8 9h8" />
+              <path d="M8 13h5" />
+            </svg>
+          </span>
+          <span class="tab-label">Ask Cortex</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="documents" onclick="window.TruCortexApp.switchTab('documents')">
+          <span class="tab-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </span>
+          <span class="tab-label">Documents</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="radar" onclick="window.TruCortexApp.switchTab('radar')">
+          <span class="tab-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="12" cy="12" r="1.5" />
+              <line x1="12" y1="3" x2="12" y2="7" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+              <line x1="3" y1="12" x2="7" y2="12" />
+              <line x1="17" y1="12" x2="21" y2="12" />
+            </svg>
+          </span>
+          <span class="tab-label">Impact Radar</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="conflicts" onclick="window.TruCortexApp.switchTab('conflicts')">
+          <span class="tab-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="18" r="3" />
+              <circle cx="6" cy="6" r="3" />
+              <path d="M6 9v12" />
+              <path d="M18 9a9 9 0 0 0-9 9" />
+            </svg>
+          </span>
+          <span class="tab-label">Conflicts</span>
+          <span class="conflict-count-pill" id="navConflictBadge">3</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="upload" id="navUploadBtn"
+          onclick="window.TruCortexApp.switchTab('upload')" style="display: none;">
+          <span class="tab-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+          </span>
+          <span class="tab-label">Upload</span>
+          <span class="pm-only-pill">PM</span>
+        </button>
+      </nav>
+
+      <!-- Right: Utility Controls & User Profile -->
+      <div class="platform-utility">
+        <!-- Quick Search Bar / Global Specification Lookup -->
+        <button class="util-search-btn" onclick="window.TruCortexApp.openSearchOverlay()" title="Search documents, policies, and regulatory rules (Press /)">
+          <div class="search-btn-left">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <span class="search-placeholder-text">Search documents, policies, rules...</span>
+          </div>
+          <kbd class="search-shortcut-pill">/</kbd>
+        </button>
+
+        <!-- Notification Bell -->
+        <div class="notif-wrapper" style="position: relative;">
+          <button class="btn-icon-util" id="btnNotifBell" onclick="window.TruCortexApp.toggleNotifDropdown()"
+            title="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+            <span class="notif-badge" id="notifBadge">1</span>
+          </button>
+          <!-- Notifications Dropdown -->
+          <div class="notif-dropdown" id="notifDropdown">
+            <div class="dropdown-header">
+              <span>ENTERPRISE POLICY ALERTS</span>
+              <button class="btn-micro-clear" onclick="window.TruCortexApp.clearAllNotifications()">Clear</button>
+            </div>
+            <div id="notifListItems" class="notif-list-body"></div>
+          </div>
+        </div>
+
+        <!-- User Profile Chip & Dropdown -->
+        <div class="user-chip-wrapper" style="position: relative;">
+          <div class="user-profile-chip" id="currentUserChip" onclick="window.TruCortexApp.toggleUserMenu()">
+            <!-- Populated dynamically -->
+          </div>
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <div class="dropdown-header">SWITCH SIMULATED PERSONA</div>
+            <div class="dropdown-item" onclick="window.TruCortexApp.switchUser('vikram')">
+              <div class="user-drop-row">
+                <span class="avatar-dot" style="background:#0B5A6B;">VS</span>
+                <div>
+                  <strong>Vikram Shah</strong>
+                  <span class="user-drop-role">Product Manager (Approver)</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-item" onclick="window.TruCortexApp.switchUser('rohan')">
+              <div class="user-drop-row">
+                <span class="avatar-dot" style="background:#0876B9;">RM</span>
+                <div>
+                  <strong>Rohan Mehta</strong>
+                  <span class="user-drop-role">UAT Tester (Technical)</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-item" onclick="window.TruCortexApp.switchUser('ananya')">
+              <div class="user-drop-row">
+                <span class="avatar-dot" style="background:#00A6CA;">AR</span>
+                <div>
+                  <strong>Ananya Rao</strong>
+                  <span class="user-drop-role">Product Analyst (Product-only)</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-item" onclick="window.TruCortexApp.switchUser('priya')">
+              <div class="user-drop-row">
+                <span class="avatar-dot" style="background:#F2C94C; color:#063B5C;">PN</span>
+                <div>
+                  <strong>Priya Nair</strong>
+                  <span class="user-drop-role">Sales Executive (General)</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item reset-item" onclick="window.TruCortexApp.resetDemo()">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                  <path d="M3 3v5h5" />
+                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                  <path d="M16 21h5v-5" />
+                </svg>
+                <span>Reset Demo State</span>
+              </div>
+            </div>
+            <div class="dropdown-item logout-item" onclick="window.TruCortexApp.signOut()">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+                <span>Switch Account / Microsoft SSO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Solid Brand Yellow Bar (4px) -->
+    <div class="platform-yellow-bar"></div>
+  </header>
+
+  <!-- ========================================================================
+       MICROSOFT ENTRA ID SSO GATEWAY (Shown when signed out)
+       ======================================================================== -->
+  <div class="sso-gateway-container" id="ssoGatewayView" style="display: none;">
+    <div class="sso-backdrop-art">
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="sso-gateway-card">
+      <div class="ms-logo-lockup">
+        <div class="ms-squares">
+          <div class="ms-sq sq-red"></div>
+          <div class="ms-sq sq-green"></div>
+          <div class="ms-sq sq-blue"></div>
+          <div class="ms-sq sq-yellow"></div>
+        </div>
+        <span class="ms-wordmark">Microsoft</span>
+      </div>
+
+      <div class="sso-cibil-context">
+        <div class="cibil-badge-row">
+          <img src="assets/logo.svg" alt="TransUnion CIBIL" style="height: 22px;">
+          <span class="cibil-suite-tag">TruCortex AI</span>
+        </div>
+        <p class="cibil-auth-sub">Enterprise Single Sign-On · TransUnion CIBIL Directory</p>
+      </div>
+
+      <!-- State 1: Choose an Account -->
+      <div id="ssoAccountPicker">
+        <h2 class="ms-heading">Choose an account</h2>
+        <div class="sso-account-list" id="ssoAccountList"></div>
+        <div class="sso-other-account"
+          onclick="window.TruCortexApp.showToast('Select one of the 4 TransUnion CIBIL test personas.', 'info')">
+          <span>+</span>
+          <span>Use different account</span>
+        </div>
+      </div>
+
+      <!-- State 2: Signing in animated dots -->
+      <div id="ssoProgressView" class="sso-progress-view" style="display: none;">
+        <div class="ms-dots-loader">
+          <div class="ms-dot"></div>
+          <div class="ms-dot"></div>
+          <div class="ms-dot"></div>
+        </div>
+        <div style="font-size: 0.9375rem; font-weight: 600; color: #1B1B1B;">Signing in to TruCortex AI...</div>
+        <div id="ssoSigningName" style="font-size: 0.8125rem; color: #737373; margin-top: 4px;"></div>
+      </div>
+
+      <!-- State 3: Stay signed in? -->
+      <div id="ssoStaySignedInView" style="display: none;">
+        <h2 class="ms-heading">Stay signed in?</h2>
+        <p style="font-size: 0.875rem; color: #1B1B1B; margin-bottom: 16px;">
+          Do this to reduce the number of times you are asked to sign in to TruCortex AI.
+        </p>
+        <div id="ssoStayName" style="font-size: 0.8125rem; color: #0078D4; font-weight: 600; margin-bottom: 24px;">
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 12px;">
+          <button class="btn-micro" id="ssoStayNo" style="padding: 8px 24px; border-radius: 2px;">No</button>
+          <button class="btn-micro" id="ssoStayYes"
+            style="background: #0067B8; color: #fff; padding: 8px 24px; border-radius: 2px; border-color: #0067B8;">Yes</button>
+        </div>
+      </div>
+
+      <div class="sso-footer-text">
+        <span>🔒 TransUnion CIBIL Enterprise Directory · Entra ID SSO Simulation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       PLATFORM SCREENS (Main Platform View)
+       ======================================================================== -->
+  <main class="platform-main-container" id="platformMainContainer">
+    <!-- Screen 1: Dashboard -->
+    <section class="platform-screen active-screen" id="screen-dashboard"></section>
+
+    <!-- Screen 2: Ask Cortex -->
+    <section class="platform-screen" id="screen-ask"></section>
+
+    <!-- Screen 3: Specifications Repository -->
+    <section class="platform-screen" id="screen-documents"></section>
+
+    <!-- Screen 4: Change Impact Radar -->
+    <section class="platform-screen" id="screen-radar"></section>
+
+    <!-- Screen 5: Semantic Conflict Radar -->
+    <section class="platform-screen" id="screen-conflicts"></section>
+
+    <!-- Screen 6: Upload & Ingestion (PM only) -->
+    <section class="platform-screen" id="screen-upload"></section>
+
+    <!-- Screen 7: LLM Benchmark Matrix -->
+    <section class="platform-screen" id="screen-benchmark"></section>
+
+    <!-- Screen 8: Governance & Security Audit -->
+    <section class="platform-screen" id="screen-audit"></section>
+  </main>
+
+  <!-- ========================================================================
+       DOCUMENT SNIPPET & CITATION DRAWER
+       ======================================================================== -->
+  <aside class="doc-drawer" id="docDetailDrawer">
+    <div class="drawer-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="drawer-icon" style="display:flex; align-items:center; justify-content:center; color:#00A6CA;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+          </svg>
+        </span>
+        <div>
+          <h3 id="docDrawerTitle" class="drawer-heading">Document Details</h3>
+          <span class="drawer-sub">TransUnion CIBIL Governed Knowledge Repository</span>
+        </div>
+      </div>
+      <button class="btn-close-drawer" onclick="window.TruCortexApp.closeDocDrawer()" title="Close (Esc)">×</button>
+    </div>
+    <div class="drawer-body" id="docDrawerBody"></div>
+  </aside>
+
+  <!-- ========================================================================
+       ANIMATED SEARCH OVERLAY (Shortcut: /)
+       ======================================================================== -->
+  <div class="search-overlay" id="searchOverlay" onclick="if(event.target === this) window.TruCortexApp.closeSearchOverlay()">
+    <div class="search-overlay-container">
+      <div class="search-overlay-bar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A6CA" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input type="text" id="globalSearchInput"
+          placeholder="Search credit policies, rules, attributes, or keywords (e.g. CMR, SHG, 60 DPD)..."
+          oninput="window.TruCortexApp.onGlobalSearchInput(this.value)"
+          onkeydown="if(event.key === 'Enter') { window.TruCortexApp.onGlobalSearchEnter(this.value); }">
+        <button class="btn-close-search" onclick="window.TruCortexApp.closeSearchOverlay()">ESC</button>
+      </div>
+
+      <!-- Quick Suggestions & Live Results List -->
+      <div class="search-overlay-body" id="searchOverlayBody">
+        <div class="search-suggestions-hint">
+          <span class="suggest-label">POPULAR:</span>
+          <button class="search-quick-tag" onclick="window.TruCortexApp.execGlobalSearch('CreditVision CMR')">CreditVision CMR</button>
+          <button class="search-quick-tag" onclick="window.TruCortexApp.execGlobalSearch('SHG CIR v5.0')">SHG CIR v5.0</button>
+          <button class="search-quick-tag" onclick="window.TruCortexApp.execGlobalSearch('60 DPD')">60 DPD Threshold</button>
+          <button class="search-quick-tag" onclick="window.TruCortexApp.execGlobalSearch('Seasoning')">Tradeline Seasoning</button>
+        </div>
+        <div class="search-live-results" id="searchLiveResults"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       COMMAND PALETTE (Ctrl+K / Cmd+K)
+       ======================================================================== -->
+  <div class="command-palette-overlay" id="commandPalette"
+    onclick="if(event.target === this) window.TruCortexApp.closeCommandPalette()">
+    <div class="command-palette-card">
+      <div class="palette-input-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#063B5C" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input type="text" id="commandPaletteInput" class="palette-input"
+          placeholder="Type a command or jump to screen (e.g. 'Radar', 'Conflicts', 'Switch User')...">
+        <span style="font-size: 0.6875rem; color: #718096;">ESC to exit</span>
+      </div>
+      <div class="palette-results-list">
+        <div class="palette-item" id="palDashboardItem"
+          onclick="window.TruCortexApp.switchTab('dashboard'); window.TruCortexApp.closeCommandPalette()">
+          <span class="palette-label-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="9" rx="1" />
+              <rect x="14" y="3" width="7" height="5" rx="1" />
+              <rect x="14" y="12" width="7" height="9" rx="1" />
+              <rect x="3" y="16" width="7" height="5" rx="1" />
+            </svg>
+            <span>Open Executive Dashboard</span>
+          </span>
+          <kbd>Tab 1</kbd>
+        </div>
+        <div class="palette-item"
+          onclick="window.TruCortexApp.switchTab('ask'); window.TruCortexApp.closeCommandPalette()">
+          <span class="palette-label-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              <path d="M8 9h8" />
+              <path d="M8 13h5" />
+            </svg>
+            <span>Ask TruCortex AI Engine</span>
+          </span>
+          <kbd>Tab 2</kbd>
+        </div>
+        <div class="palette-item"
+          onclick="window.TruCortexApp.switchTab('documents'); window.TruCortexApp.closeCommandPalette()">
+          <span class="palette-label-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+            <span>Open Documents Repository</span>
+          </span>
+          <kbd>Tab 3</kbd>
+        </div>
+        <div class="palette-item"
+          onclick="window.TruCortexApp.switchTab('radar'); window.TruCortexApp.closeCommandPalette()">
+          <span class="palette-label-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="12" cy="12" r="1.5" />
+              <line x1="12" y1="3" x2="12" y2="7" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+              <line x1="3" y1="12" x2="7" y2="12" />
+              <line x1="17" y1="12" x2="21" y2="12" />
+            </svg>
+            <span>Change Impact Radar</span>
+          </span>
+          <kbd>Tab 4</kbd>
+        </div>
+        <div class="palette-item"
+          onclick="window.TruCortexApp.switchTab('conflicts'); window.TruCortexApp.closeCommandPalette()">
+          <span class="palette-label-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="18" r="3" />
+              <circle cx="6" cy="6" r="3" />
+              <path d="M6 9v12" />
+              <path d="M18 9a9 9 0 0 0-9 9" />
+            </svg>
+            <span>Semantic Conflict Radar</span>
+          </span>
+          <kbd>Tab 5</kbd>
+        </div>
+        <div class="palette-item"
+          onclick="window.TruCortexApp.switchUser('vikram'); window.TruCortexApp.closeCommandPalette()">
+          <span class="palette-label-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span>Switch to Vikram Shah (Product Manager)</span>
+          </span>
+          <kbd>Approver</kbd>
+        </div>
+        <div class="palette-item"
+          onclick="window.TruCortexApp.switchUser('rohan'); window.TruCortexApp.closeCommandPalette()">
+          <span class="palette-label-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span>Switch to Rohan Mehta (UAT Tester)</span>
+          </span>
+          <kbd>Technical</kbd>
+        </div>
+        <div class="palette-item"
+          onclick="window.TruCortexApp.switchUser('priya'); window.TruCortexApp.closeCommandPalette()">
+          <span class="palette-label-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span>Switch to Priya Nair (Sales Executive)</span>
+          </span>
+          <kbd>General</kbd>
+        </div>
+        <div class="palette-item" onclick="window.TruCortexApp.resetDemo(); window.TruCortexApp.closeCommandPalette()">
+          <span class="palette-label-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+              <path d="M16 21h5v-5" />
+            </svg>
+            <span>Reset Demo Environment</span>
+          </span>
+          <kbd>Factory Reset</kbd>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODEL LOADING PROGRESS OVERLAY
+       ======================================================================== -->
+  <div class="model-loading-overlay" id="modelLoadingOverlay">
+    <div class="model-loading-box">
+      <div class="ai-spinner"></div>
+      <h4>Allocating Local Edge RAM & Quantized Weights...</h4>
+      <p style="font-size: 0.8125rem; color: #718096; margin-top: 6px;">Zero external egress. Initializing token
+        generation pipeline.</p>
+    </div>
+  </div>
+
+
+  <!-- Application Scripts in Order -->
+  <script src="js/data.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/radar.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
